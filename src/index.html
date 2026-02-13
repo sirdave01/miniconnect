@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <!--default theme to be toggled by JS-->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Basic SEO -->
+    <title>MiniConnect – Demi-Twitter/X by ByteHaven Tech Solutions Ltd</title>
+
+    <meta
+      name="description"
+      content="MiniConnect: A lightweight social platform for sharing connects, location discovery, and interactions. Powered by ByteHaven Tech Solutions Ltd."
+    />
+
+    <meta name="author" content="Osigwe Uchechukwu DavidCaleb" />
+
+    <meta
+      name="keywords"
+      content="MiniConnect, demi-Twitter, social media app Nigeria, location-based posts, ByteHaven Tech Solutions, WDD330 final project, dynamic web app"
+    />
+
+    <!-- Favicon  -->
+
+    <link
+      rel="android-chrome-192x192"
+      href="images/favicon/android-chrome-192x192.png"
+    />
+
+    <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+
+    <link
+      rel="android-chrome-512x512"
+      href="images/favicon/android-chrome-512x512.png"
+    />
+
+    <link rel="favicon-16x16" href="images/favicon/favicon-16x16.png" />
+
+    <link rel="favicon-32x32" href="images/favicon/favicon-32x32.png" />
+
+    <link rel="manifest" href="images/favicon/site.webmanifest" />
+
+    <link rel="icon" href="images/favicon/favicon.ico" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+
+    <meta
+      property="og:title"
+      content="MiniConnect by ByteHaven Tech Solutions Ltd"
+    />
+
+    <meta
+      property="og:description"
+      content="Dynamic social app for posts, likes, comments, and nearby discovery."
+    />
+
+    <meta property="og:type" content="webapp" />
+
+    <meta property="og:url" content="https://your-deploy-url.com" />
+
+    <meta
+      property="og:image"
+      content="https://sirdave01.github.io/wdd231/finalproject/favicon/apple-touch-icon.png"
+    />
+
+    <meta property="og:image:width" content="180" />
+
+    <meta property="og:image:height" content="180" />
+
+    <meta property="og:image:alt" content="ByteHaven Tech Solutions Ltd Logo" />
+
+    <meta property="og:locale" content="en_US" />
+
+    <meta property="og:site_name" content="ByteHaven Tech Solutions Ltd" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta
+      name="twitter:title"
+      content="MiniConnect by ByteHaven Tech Solutions Ltd"
+    />
+
+    <meta
+      name="twitter:description"
+      content="Dynamic social app for posts, likes, comments, and nearby discovery."
+    />
+
+    <meta
+      name="twitter:image"
+      content="https://sirdave01.github.io/wdd231/finalproject/favicon/apple-touch-icon.png"
+    />
+
+    <meta name="twitter:image:alt" content="ByteHaven circular logo" />
+
+    <meta name="twitter:site" content="@yourhandle" />
+
+    <meta name="twitter:creator" content="@yourhandle" />
+
+    <link rel="stylesheet" href="styles/base.css" />
+
+    <link rel="stylesheet" href="styles/medium.css" />
+
+    <link rel="stylesheet" href="styles/large.css" />
+
+    <script type="module" src="/js/main.mjs"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main Content</a>
+
+    <header>
+      <img
+        src="images/bytehavenlogo.webp"
+        alt="ByteHaven Logo"
+        width="16"
+        height="16"
+      />
+
+      <span> MiniConnect by ByteHaven Tech Solutions Ltd </span>
+
+      <button id="nav-btn" class="hamburger"></button>
+
+      <button
+        id="dark-mode-toggle"
+        class="theme-toggle"
+        aria-label="Toggle dark mode"
+      >
+        🌙
+      </button>
+    </header>
+
+    <nav id="nav-list" class="nav-bar">
+      <ul>
+        <li><a href="#" data-view="home">Home Feed</a></li>
+        <!-- JS handles views -->
+
+        <li><a href="#" data-view="nearby">Nearby</a></li>
+
+        <li><a href="#" data-view="profile">Profile</a></li>
+
+        <li><a href="#" data-view="services">Services</a></li>
+        <!-- Optional: Load ByteHaven info -->
+
+        <li><a href="#" data-view="contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main id="main-content">
+      <!-- App content loads here dynamically via JS -->
+
+      <div id="feed-container" class="hidden">
+        <!-- Home feed -->
+
+        <h2>Your Timeline</h2>
+
+        <div id="posts-feed"></div>
+        <!-- JS renders posts here -->
+
+        <button id="load-more">Load More</button>
+      </div>
+
+      <div id="post-form" class="hidden">
+        <!-- Create post modal/form -->
+
+        <textarea
+          id="post-text"
+          maxlength="280"
+          placeholder="What's happening?"
+        ></textarea>
+
+        <button id="submit-post">Post</button>
+      </div>
+
+      <div id="nearby-container" class="hidden">
+        <!-- Nearby discovery -->
+
+        <h2>Nearby Connects</h2>
+
+        <div id="nearby-feed"></div>
+      </div>
+
+      <div id="profile-container" class="hidden">
+        <!-- User profile -->
+
+        <h2>Your Profile</h2>
+
+        <div id="user-info"></div>
+
+        <div id="user-posts"></div>
+      </div>
+
+      <!-- Add more divs for services/contact if keeping multi-view -->
+
+      <div id="notifications-bell">🔔 <span id="notif-count">0</span></div>
+      <!-- Header bell for notifs -->
+    </main>
+
+    <footer>
+      <!-- Keep your footer—great for APIs/live data -->
+      <div id="bytehaven-digital">
+        <h3>ByteHaven Tech Solutions</h3>
+
+        <p>
+          Your digital safe Space that turns your Tech Problems into Solutions
+        </p>
+
+        <p>
+          <img src="/images/icons/location.svg" alt="location icon" /> Aba, Abia
+          State, Nigeria
+        </p>
+
+        <p>
+          <img src="/images/icons/email.svg" alt="email icon" /><a
+            href="mailto:d08178084956@gmail?subject=Inquiry%20Website&body=Hello,%20I%20have%20a%20question%20about..."
+            target="_blank"
+            >Email Us</a
+          >
+        </p>
+      </div>
+
+      <div id="quick-links">
+        <h3>Quick Links</h3>
+
+        <ul>
+          <li><a href="#">Home Feed</a></li>
+
+          <li><a href="#">Nearby</a></li>
+
+          <li><a href="#">Profile</a></li>
+        </ul>
+      </div>
+
+      <div id="socials">
+        <h3>Socials</h3>
+
+        <a href="https://github.com/sirdave01/wdd231" target="_blank"
+          ><img
+            src="/images/github.svg"
+            alt="github"
+            width="16"
+            height="16"
+            loading="lazy"
+        /></a>
+
+        <a
+          href="https://www.linkedin.com/in/caleb-osigwe-294085253/"
+          target="_blank"
+          ><img
+            src="/images/linkedin.svg"
+            alt="linkedin"
+            width="16"
+            height="16"
+            loading="lazy"
+        /></a>
+
+        <a href="https://wa.me/+2349035677967" target="_blank"
+          ><img
+            src="/images/whatsapp.svg"
+            alt="whatsapp"
+            width="16"
+            height="16"
+            loading="lazy"
+        /></a>
+      </div>
+
+      <hr />
+
+      <div id="live-clock"></div>
+
+      <div id="year-date">
+        <p>
+          Live data powered by
+          <a href="https://openweathermap.org" target="_blank" rel="noopener"
+            >OpenWeather</a
+          >,
+          <a href="https://www.coingecko.com/" target="_blank" rel="noopener"
+            >CoinGecko</a
+          >
+          &
+          <a
+            href="https://www.exchangerate-api.com"
+            target="_blank"
+            rel="noopener"
+            >ExchangeRate-API</a
+          >
+        </p>
+
+        <p>• <a href="https://youtu.be/WtkcyyMBmLw">YouTube Video</a></p>
+
+        <p>
+          &copy; <span id="currentyear"></span> ByteHaven Tech Solutions Ltd
+          Development Team
+        </p>
+
+        <p><span id="lastModified"></span></p>
+      </div>
+    </footer>
+  </body>
+</html>
