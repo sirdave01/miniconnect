@@ -98,11 +98,11 @@
 
     <meta name="twitter:creator" content="@yourhandle" />
 
-    <link rel="stylesheet" href="/styles/base.css" />
+    <!-- <link rel="stylesheet" href="/styles/base.css" />
 
     <link rel="stylesheet" href="styles/medium.css" />
 
-    <link rel="stylesheet" href="styles/large.css" />
+    <link rel="stylesheet" href="styles/large.css" /> -->
 
     <script type="module" src="/js/main.mjs"></script>
 
@@ -121,94 +121,86 @@
     <a href="#main-content" class="skip-link">Skip to main Content</a>
 
     <header>
-      <img
-        src="images/bytehavenlogo.webp"
-        alt="ByteHaven Logo"
-        width="16"
-        height="16"
-      />
+      <h1>MiniConnect</h1>
 
-      <span> MiniConnect by ByteHaven Tech Solutions Ltd </span>
+      <div>
+        <button id="dark-mode-toggle">🌙</button>
 
-      <button id="nav-btn" class="hamburger"></button>
+        <button id="notifications-bell">
+          🔔 <span id="notif-count">0</span>
+        </button>
 
-      <button
-        id="dark-mode-toggle"
-        class="theme-toggle"
-        aria-label="Toggle dark mode"
-      >
-        🌙
-      </button>
+        <div id="notifications-dropdown" class="hidden"></div>
+      </div>
     </header>
 
-    <nav id="nav-list" class="nav-bar">
-      <ul>
-        <li><a href="#" data-view="home">Home Feed</a></li>
-        <!-- JS handles views -->
+    <nav id="main-nav">
+      <a data-view="home">Home Feed</a>
 
-        <li><a href="#" data-view="nearby">Nearby</a></li>
+      <a data-view="search">Search</a>
 
-        <li><a href="#" data-view="profile">Profile</a></li>
+      <a data-view="new-post">New Post</a>
 
-        <li><a href="#" data-view="services">Services</a></li>
-        <!-- Optional: Load ByteHaven info -->
+      <a data-view="profile">Profile</a>
 
-        <li><a href="#" data-view="contact">Contact</a></li>
-      </ul>
+      <a data-view="nearby">Nearby</a>
     </nav>
 
-    <main id="main-content">
-      <!-- App content loads here dynamically via JS -->
-
-      <div id="feed-container" class="hidden">
-        <!-- Home feed -->
-
-        <h2>Your Timeline</h2>
-
+    <main>
+      <div id="feed-container">
         <div id="posts-feed"></div>
-        <!-- JS renders posts here -->
 
         <button id="load-more">Load More</button>
       </div>
 
-      <div id="post-form" class="hidden">
-        <!-- Create post modal/form -->
+      <div id="search-container" class="hidden">
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Search users or posts..."
+        />
 
+        <button class="search-button">Search</button>
+
+        <div id="search-results"></div>
+      </div>
+
+      <div id="new-post-container" class="hidden">
         <textarea
           id="post-text"
           maxlength="280"
           placeholder="What's happening?"
         ></textarea>
 
+        <input
+          type="url"
+          id="post-image-url"
+          placeholder="Image URL (optional)"
+        />
+
+        <label
+          ><input type="checkbox" id="attach-location" checked /> Attach
+          location</label
+        >
+
         <button id="submit-post">Post</button>
       </div>
 
-      <div id="nearby-container" class="hidden">
-        <!-- Nearby discovery -->
-
-        <h2>Nearby Connects</h2>
-
-        <div id="nearby-feed"></div>
-      </div>
-
       <div id="profile-container" class="hidden">
-        <!-- User profile -->
-
-        <h2>Your Profile</h2>
-
         <div id="user-info"></div>
 
         <div id="user-posts"></div>
       </div>
 
-      <!-- Add more divs for services/contact if keeping multi-view -->
+      <div id="nearby-container" class="hidden">
+        <div id="nearby-feed"></div>
+      </div>
 
-      <div id="notifications-bell">🔔 <span id="notif-count">0</span></div>
-      <!-- Header bell for notifs -->
+      <div id="post-detail-container" class="hidden"></div>
     </main>
 
     <footer>
-      <!-- Keep your footer—great for APIs/live data -->
+      <!-- Footer -->
       <div id="bytehaven-digital">
         <h3>ByteHaven Tech Solutions</h3>
 
@@ -234,11 +226,11 @@
         <h3>Quick Links</h3>
 
         <ul>
-          <li><a href="#">Home Feed</a></li>
+          <li><a href="#" data-view="home">Home Feed</a></li>
 
-          <li><a href="#">Nearby</a></li>
+          <li><a href="#" data-view="nearby">Nearby</a></li>
 
-          <li><a href="#">Profile</a></li>
+          <li><a href="#" data-view="profile">Profile</a></li>
         </ul>
       </div>
 
@@ -280,23 +272,6 @@
       <div id="live-clock"></div>
 
       <div id="year-date">
-        <p>
-          Live data powered by
-          <a href="https://openweathermap.org" target="_blank" rel="noopener"
-            >OpenWeather</a
-          >,
-          <a href="https://www.coingecko.com/" target="_blank" rel="noopener"
-            >CoinGecko</a
-          >
-          &
-          <a
-            href="https://www.exchangerate-api.com"
-            target="_blank"
-            rel="noopener"
-            >ExchangeRate-API</a
-          >
-        </p>
-
         <p>• <a href="https://youtu.be/WtkcyyMBmLw">YouTube Video</a></p>
 
         <p>

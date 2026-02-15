@@ -1,8 +1,7 @@
-import { initDarkMode } from "./modetoggle.mjs";
+// Entry point
 
-import { loadFeed } from "./feed.mjs";
+import { MiniConnectApp } from './app.mjs';
 
 document.addEventListener('DOMContentLoaded', () => {
-    initDarkMode();
-    loadFeed();
+    new MiniConnectApp();
 });
