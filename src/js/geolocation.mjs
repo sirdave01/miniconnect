@@ -45,8 +45,8 @@ async function getUserLocation() {
 }
 
 async function getLocationByIP() {
-    // Using ipinfo.io (no API key needed for basic usage, limited to 50k/month)
-    const response = await fetch('https://ipinfo.io/json?token='); // Optionally add a token if you have one
+    // Using ipinfo.io for IP-based geolocation
+    const response = await fetch('https://ipinfo.io/json?token='); 
     if (!response.ok) throw new Error('IP location lookup failed');
     const data = await response.json();
     if (!data.loc) throw new Error('IP location lookup failed');
