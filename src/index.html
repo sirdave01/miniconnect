@@ -98,11 +98,7 @@
 
     <meta name="twitter:creator" content="@yourhandle" />
 
-    <!-- <link rel="stylesheet" href="/styles/base.css" />
-
-    <link rel="stylesheet" href="styles/medium.css" />
-
-    <link rel="stylesheet" href="styles/large.css" /> -->
+    <link rel="stylesheet" href="/styles/base.css" />
 
     <script type="module" src="/js/main.mjs"></script>
 
@@ -131,19 +127,48 @@
         </button>
 
         <div id="notifications-dropdown" class="hidden"></div>
+
+        <!-- Hamburger button for mobile -->
+
+        <button
+          id="nav-btn"
+          aria-label="Open navigation"
+          aria-controls="nav-list"
+          aria-expanded="false"
+          class="hamburger"
+          style="display: none"
+        >
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </header>
 
     <nav id="main-nav">
-      <a data-view="home">Home Feed</a>
+      <!-- Bottom tab bar for mobile -->
+      <div id="tab-bar">
+        <a data-view="home" aria-label="Home"
+          >🏠<span class="tab-label">Home</span></a
+        >
 
-      <a data-view="search">Search</a>
+        <a data-view="search" aria-label="Search"
+          >🔍<span class="tab-label">Search</span></a
+        >
 
-      <a data-view="new-post">New Post</a>
+        <a data-view="new-post" aria-label="New Post"
+          >✚<span class="tab-label">Post</span></a
+        >
 
-      <a data-view="profile">Profile</a>
+        <a data-view="profile" aria-label="Profile"
+          >👤<span class="tab-label">Profile</span></a
+        >
+      </div>
 
-      <a data-view="nearby">Nearby</a>
+      <!-- Hamburger menu for extra options -->
+      <div id="nav-list">
+        <a data-view="nearby">Nearby</a>
+
+        <a data-view="settings">Settings</a>
+      </div>
     </nav>
 
     <main>
@@ -197,6 +222,10 @@
       </div>
 
       <div id="post-detail-container" class="hidden"></div>
+
+      <div id="settings-container" class="hidden">
+        <div id="settings-content"></div>
+      </div>
     </main>
 
     <footer>

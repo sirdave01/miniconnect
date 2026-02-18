@@ -7,12 +7,6 @@ export function loadFeed(app, additionalPosts = null) {
     if (!additionalPosts) {
         if (app.feedElement) app.feedElement.innerHTML = "";
     }
-    // to move the newpost container to the top of the feed
-    const newPosts = document.querySelector('#new-post-container');
-    if (newPosts) {
-        newPosts.classList.remove('hidden');
-        app.feedElement.prepend(newPosts);
-    }
     let postsToRender = additionalPosts || (app.showFollowedOnly ?
         app.posts.filter(p => app.followedUsers.has(p.userId)) : app.posts);
     postsToRender.forEach(post => {

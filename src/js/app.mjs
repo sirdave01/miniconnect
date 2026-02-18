@@ -14,6 +14,8 @@ import { initNavigation } from './nav.mjs';
 import { toggleTheme, loadTheme } from './theme.mjs';
 import { loadNearby } from './locationdiscovery.mjs';
 import { initFooterDate } from './footer.mjs';
+import { initHamburger } from './hambutton.mjs';
+import { initLiveClock } from './liveclock.mjs';
 
 export class MiniConnectApp {
     constructor() {
@@ -39,7 +41,6 @@ export class MiniConnectApp {
         this.loadMoreButton = document.getElementById('load-more');
         this.submitPostButton = document.getElementById('submit-post');
         this.postText = document.getElementById('post-text');
-        this.navList = document.getElementById('nav-list') || document.getElementById('quick-links'); // Fallback to your HTML
         this.darkModeToggle = document.getElementById('dark-mode-toggle');
         this.notificationsBell = document.getElementById('notifications-bell');
         this.init();
@@ -79,6 +80,9 @@ export class MiniConnectApp {
             addNotification(this, 'Welcome to MiniConnect!');
             loadFeed(this);
             initFooterDate();
+            initLiveClock();
+            // Initialize hamburger menu for mobile
+            initHamburger();
         } catch (err) {
             console.error('Init error:', err);
             if (this.feedElement) this.feedElement.innerHTML = '<p>Error loading app.</p>';
@@ -157,8 +161,39 @@ export class MiniConnectApp {
     }
 
     showView(viewId) {
-        document.querySelectorAll('main > div').forEach(div => div.classList.add('hidden'));
-        const container = document.getElementById(`${viewId}-container`);
-        if (container) container.classList.remove('hidden');
+        // Map viewId to the actual container ID
+        const containerMap = {
+            'home': 'feed-container',
+            'search': 'search-container',
+            'new-post': 'new-post-container',
+            'profile': 'profile-container',
+            'nearby': 'nearby-container',
+            'post-detail': 'post-detail-container',
+            'settings': 'settings-container'
+        };
+        
+        const containerId = containerMap[viewId] || `${viewId}-container`;
+        
+        // Hide all containers
+        const allContainers = document.querySelectorAll('main > div');
+        allContainers.forEach(div => {
+            div.classList.add('hidden');
+        });
+        
+        // Show the requested container
+        const container = document.querySelector(`#${containerId}`);
+        if (container) {
+            container.classList.remove('hidden');
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            console.error(`Container not found: ${containerId}`);
+            // List all available containers for debugging
+            console.log('Available containers:', Array.from(allContainers).map(d => d.id));
+        }
+    }
+
+    initHamburger() {
+        initHamburger();
     }
 }
